@@ -1,0 +1,217 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ela Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+
+
+    <style>
+
+        /* CSS */
+        .button-92 {
+        --c: #fff;
+        /* text color */
+        background: linear-gradient(90deg, #0000 33%, #fff5, white 67%) var(--_p,100%)/300% no-repeat,
+            #004dff;
+        /* background color */
+        color: white;
+        border: none;
+        transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
+        text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
+            calc(var(--_i,-1)*-0.08em)  .01em 2px rgba(77, 75, 75, 0.267);
+        outline-offset: .1em;
+        transition: 0.3s;
+        }
+
+        .button-92:hover,
+        .button-92:focus-visible {
+        --_p: 0%;
+        --_i: 1;
+        }
+
+        .button-92:active {
+        text-shadow: none;
+        color: var(--c);
+        box-shadow: white;
+        transition: 0s;
+        }
+
+        .button-92 {
+        font-weight: bold;
+        font-size: 1rem;
+        margin: 0;
+        cursor: pointer;
+        padding: .1em .3em;
+        }
+
+        .Knor{
+           margin-top: -3%;
+           margin-bottom: 2%;
+        }
+
+        .whyte{
+            color: white;
+        }
+
+            
+    .button-57 {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #18181a;
+    color: #18181a;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 18px 18px 17px;
+    text-decoration: none;
+    /* border-radius: 40%; */
+    cursor: pointer;
+    /* background: #fff; */
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    }
+
+    .button-57 span:first-child {
+    position: relative;
+    transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 10;
+    }
+
+    .button-57 span:last-child {
+    color: white;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 100;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    padding-top: 1%;
+    transform: translateY(225%) translateX(-50%);
+    height: 14px;
+    line-height: 13px;
+    }
+
+    .button-57:after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(69, 168, 69);
+    transform-origin: bottom center;
+    transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    transform: skewY(9.3deg) scaleY(0);
+    z-index: 50;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    .button-57:hover:after {
+    transform-origin: bottom center;
+    transform: skewY(9.3deg) scaleY(2);
+    }
+
+    .button-57:hover span:last-child {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 1;
+    transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+    }
+
+
+    </style>
+</head>
+<body class="bg-dark">
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="/">
+                        <!-- <img class="align-content" src="../images/logo.png" alt=""> -->
+                        <h1>Zone Forum</h1>
+                        <small style="color: rgb(35, 206, 206);">Sign in</small>
+                    </a>
+                </div>
+                <div class="login-form">
+                    <form method="post">
+                        <div class="form-group">
+                            <label>UserName / Email address</label>
+                            <input type="text" name="logmail" class="form-control" placeholder="User">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="logpwd" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                            <label class="pull-right">
+                                <a href="#">Forgotten Password?</a>
+                            </label>
+                        </div>
+
+                        <!-- <button type="submit" value="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button> -->
+                        <button type="submit" value="submit" class="button-57 btn btn-success btn-flat m-b-30 m-t-30" role="button"><span class="text">Sign in</span><span class="text">Allons-y</span></button>
+                        <div class="social-login-content">
+                            <center><div class="Knor">
+                            <span>ou</span>
+                        </div></center>
+                            <div class="social-button">
+                                <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+                                <div style="justify-content: space-between;">
+                                <button class="button-92" role="button" role="button"><i class="ti-google whyte"><a href="/gugu"> Sign in with Google </a></i></button>
+                                <button class="button-92" role="button" role="button"><i class="ti-github whyte"><a href="/githb"> Sign in with Github </a></i></button>
+                            </div>
+                                <!-- <button type="button" class="button-57 social ti-google" title="Lets go"></button> -->
+                                <!-- <button type="button" class="btn social twitter btn-flat btn-addon mt-1"><i class="ti-google"></i>sign up with Google</button> -->
+                                <!-- <button type="button" class="btn social facebook btn-flat btn-addon mt-3"><i class="ti-facebook"></i>sign up with facebook</button> -->
+                                
+                            </div>
+                        </div>
+                        <div class="register-link m-t-15 text-center">
+                            <p>Don't have account ? <a href="page-register"> Sign Up Here</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</html>
