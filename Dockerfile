@@ -1,3 +1,11 @@
 FROM golang:latest
-COPY . /go/src/myapp
-WORKDIR /go/src/myapp
+
+WORKDIR /forum.github.io
+
+COPY . .
+
+RUN go build -o main .
+
+EXPOSE 8282
+
+CMD ["./main"]

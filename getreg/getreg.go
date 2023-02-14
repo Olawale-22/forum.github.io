@@ -1138,9 +1138,9 @@ func GoLogGoogle(w http.ResponseWriter, email string, username string, password 
 }
 
 const (
-	clientID     = "04c19f71-7dbe-4fe9-bc08-d1e82ca58ab5"
-	clientSecret = "9nM7uWvtmcOoamCdiOaf2AxNO28dNAjGIikQe8cYJvFz"
-	redirectURI  = "http://localhost:8282/github/callback"
+	clientID     = "22cc907b9cc7adacb953"
+	clientSecret = "1d2a1a105cb9b1888ce5826f7bd5880e26c74864"
+	redirectURI  = "http://localhost:8282/githb/callback"
 )
 
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
@@ -1150,5 +1150,6 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	code := r.URL.Query().Get("code")
+
 	fmt.Fprintf(w, "Welcome back, your code is: %s", code)
 }

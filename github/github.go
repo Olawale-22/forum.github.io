@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	golog "clouds/getreg"
+
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 )
@@ -195,22 +197,29 @@ import (
 // 	return ghresp.AccessToken
 // }
 
-var (
-	clientID     = "04c19f71-7dbe-4fe9-bc08-d1e82ca58ab5"
-	clientSecret = "LuBFB3Bj4Dwa20R0AozIZSyS7RUt5icwYtohRYFYKUhS"
+const (
+	clientID     = "22cc907b9cc7adacb953"
+	clientSecret = "1d2a1a105cb9b1888ce5826f7bd5880e26c74864"
+	redirectURI  = "http://localhost:8282/githb/callback"
 )
 
 var (
 	conf = &oauth2.Config{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
-		Scopes:       []string{"user:email"},
+		RedirectURL:  redirectURI,
 		Endpoint: oauth2.Endpoint{
 			AuthURL:  "https://github.com/login/oauth/authorize",
 			TokenURL: "https://github.com/login/oauth/access_token",
 		},
+		Scopes: []string{"user:email"},
 	}
 )
+
+func GithubLoginHandler(w http.ResponseWriter, r *http.Request) {
+	url := fmt.Sprintf("https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s", clientID, redirectURI)
+	http.Redirect(w, r, url, http.StatusFound)
+}
 
 func GithubCallbackHandler(w http.ResponseWriter, r *http.Request) {
 	code := r.URL.Query().Get("code")
@@ -232,17 +241,37 @@ func GithubCallbackHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Error getting user info")
 		return
 	}
+
 	email, _, err := client.Users.ListEmails(context.Background(), nil)
 	if err != nil {
 		fmt.Fprint(w, "Error getting user email")
 		return
 	}
 
-	// Render HTML with user's email
-	fmt.Fprintf(w, "<html><body><h1>Welcome, %s</h1><p>Your email is %s</p></body></html>", *user.Login, email[0].GetEmail())
+	username := fmt.Sprintln(*user.Login)
+	mail := fmt.Sprintln(email[0].GetEmail())
+	password := fmt.Sprintln(*user.ID)
+
+	golog.GoLogGoogle(w, mail, username, password, r)
+
+	//fmt.Printf("----<<<<>>>>>>>>>>>Welcome, %s</h1><p>Your email is %s and ID is %v <>----<<<<<<<<<<>>>>>>>", *user.Login, email[0].GetEmail(), *user.ID)
+	//GrantAccess(w, "/indexlog", r)
+
 }
 
-func GithubLoginHandler(w http.ResponseWriter, r *http.Request) {
+/*func GithubLoginHandler(w http.ResponseWriter, r *http.Request) {
 	url := conf.AuthCodeURL("state", oauth2.AccessTypeOffline)
 	http.Redirect(w, r, url, http.StatusFound)
+}*/
+
+/*
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	url := fmt.Sprintf("https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s", clientID, redirectURI)
+	http.Redirect(w, r, url, http.StatusFound)
+}
+*/
+
+func GrantAccess(w http.ResponseWriter, s string, r *http.Request) {
+	http.Redirect(w, r, s, http.StatusFound)
+	//http.Redirect(w, r, s, http.StatusSeeOther)
 }
