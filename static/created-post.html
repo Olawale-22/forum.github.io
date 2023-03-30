@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Created Posts</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -47,7 +47,7 @@
 
     </script>
 
-    <script>
+    <!-- <script>
         var typing = false;
 
         var inputElements = document.querySelectorAll("input, textarea");
@@ -66,8 +66,8 @@
             location.reload();
         }
         }, 15000);
-    </script>
-    
+    </script> -->
+
    <style>
 
     #weatherWidget .currentDesc {
@@ -185,6 +185,7 @@
 
 <body id="each">
     <!-- Left Panel -->
+
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -210,7 +211,7 @@
                     <li class="menu-title">CATEGORIES</li><!-- /.menu-title -->
 
                     <li>
-                        <a href="games"> <i class="menu-icon fa fa-gamepad"></i>  Games</a>
+                        <a href="indexlog"> <i class="menu-icon fa fa-gamepad"></i>  Game</a>
                     </li>
                     <li>
                         <a href="gardening"> <i class="menu-icon fa fa-leaf"></i>Gardening</a>
@@ -221,18 +222,15 @@
                     <li>
                         <a href="life-hacks"> <i class="menu-icon fa fa-calendar-o"></i>Life hacks </a>
                     </li>
-
+                    
                     <li class="menu-title">FILTERS</li><!-- /.menu-title -->
 
                     <li>
-                        <a href="createdposts"> <i class="menu-icon fa fa-gamepad"></i>  Created Post</a>
+                        <a href="indexlog"> <i class="menu-icon fa fa-calendar-o"></i>  Home</a>
                     </li>
                     <li>
                         <a href="liked"> <i class="menu-icon fa fa fa-heart"></i>  Liked Post</a>
                     </li>
-                    <!-- <li>
-                        <a href="liked-posts.html"> <i class="menu-icon fa fa-heart"></i>Posts liked</a>
-                    </li> -->
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -282,12 +280,13 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="dropdown for-message">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-envelope"></i>
                                 <span class="count bg-primary">4</span>
                             </button>
+
                             <div class="dropdown-menu" aria-labelledby="message">
                                 <p class="red">You have 4 Mails</p>
                                 <a class="dropdown-item media" href="#">
@@ -346,36 +345,17 @@
             </div>
         </header>
 
-        <div class="card-title box-title title-text" style="display: flex; flex-direction: row;">
-            <h3>Trending Zone Forum</h3>
-            <!-- <form method="POST" style="padding-bottom: -20;">
-            <select name="filter" class="select-filter-of-post" style="margin-left: 20%;">
-                <option name="filter" value="">Filtered by</option>
-                <option name="filter" value="created-posts">Created posts</option>
-                <option name="filter" value="liked-posts">Liked posts</option>
-            </select>
-            </form> -->
+        <div class="card-title box-title title-text">
+            <h3>Created Posts</span></h3>
         </div>
         <hr>
         <div style="margin-left: 5%; padding-top: 2%; margin-top: 2%; margin-right: 5%;">
             <div class="little-title-text">
                 <medium>.Annonces .Info .Entertainment .Blog .Invitations —— make a post...</medium>
             </div>
-            <form method="POST" style="padding-bottom: -8%;">
-                <div>
-                    <textarea class="form-control card card-body" type="text" name="postit" style="margin-bottom: 0%; width: 100%; height: 10vh; border-radius: 10px; border: none; padding-left: 1%; text-align: left;" placeholder="whats on your mind?">
-                    </textarea>
-                </div>
-                <select name="categories" class="select-category-of-post">
-                    <option name="categories" value="">Select a category</option>
-                    <option name="categories" value="games">Games</option>
-                    <option name="categories" value="gardening">Gadening</option>
-                    <option name="categories" value="books">Book</option>
-                    <option name="categories" value="life-hacks">Life Hacks</option>
-                </select>
-                <button type="submit" class="button-3" role="button">post</button>
-            </form>
+
             {{ range .Pst }}
+
             <div class="card"><a href="/post?id={{ .Pid }}">
 
                 <div class="card-body">
@@ -388,8 +368,8 @@
                                 </div>
                                 <div class="meg">
                                     <br>
-                                    <h4>{{ .Posted }}</h4>
-                                    <small>category: {{ .Category }}</small>
+                                    <h4 style="margin-bottom: 2%;">{{ .Posted }}</h4>
+
                                     <form method="post">
                                         <!-- fonts from jsdeliver -->
                                         <i class="fa fa-clock-o"></i>
@@ -397,7 +377,7 @@
                                         <small>{{ .Time }}</small>
                                         <button  style="margin-left: 2%;" type="submit" name="lyks" value="{{ .Pid }}"><i class="fa fa-thumbs-o-up" style="padding-left: 3%;"></i></button>
                                         <small>{{ .Likes }} likes</small>
-                                        
+
                                         <button style="margin-left: 2%;" name="unlyks" type="submit" value="{{ .Pid }}"><i class="fa fa-thumbs-o-down" style="padding-left: 3%;"></i></button>
                                         <small>{{ .Dislikes}} dislikes</small>
                                     </form>
@@ -434,10 +414,9 @@
                                     </div>
                                     {{ end }}
                                 </li> -->
-
+                                
                                 <li>
                                     {{ range .Commenters }}
-
                                     <div class="msg-sent msg-container">
                                         <div class="avatar">
                                            <img src="images/avatar/64-2.jpg" alt="">
@@ -448,21 +427,15 @@
                                                 <div class="name">
                                                     <b>@{{ .Name }}</b>
                                                 </div>
-                                                
                                                 <div class="meg">
                                                     {{ .Comment }}
                                                 </div>
-                                                <div style="margin-bottom: -3%;">
-                                                <button class="button fa fa-thumbs-o-up" name="lyks">{{ .Likes }}</button>
-                                            <button class="fa fa-thumbs-o-down" name="dislyks">{{ .Dislikes }}</button>
-                                        </div>
                                             </div>
                                         </div>
                                     </div>
                                     {{ end }}
                                 </li>
                             </ul>
-                            
                         </a>
                         <script>window.scrollTo(0, "{{ .Pid}}");</script>
                             <div class="send-mgs">
@@ -484,7 +457,7 @@
             </div><!-- /.card -->
             {{ end }}
         </div>    <!-- /#right-panel -->
-
+        
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>

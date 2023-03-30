@@ -24,9 +24,9 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <script>
+    <!-- AUTO REFRESH PAGE FOR NEW MESSAGES -->
+    <!-- <script>
        var typing = false;
-
         var inputElements = document.querySelectorAll("input, textarea");
 
         for (var i = 0; i < inputElements.length; i++) {
@@ -44,20 +44,17 @@
         }
         }, 15000);
 
-    </script>
+    </script> -->
     <style>
         hr{
-            
-            margin-top: 5%;
-            
+            margin-top: 5%; 
         }
     </style>
-
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
 </head>
 <body>
     <center>
+        <button style="margin-top: 2%;"><a href="indexlog">GO Back</a></button>
     <div style=" margin-top: 1%; height: 100vh; margin-bottom: 3%; padding: 2%;">
     <div class="card">
         <div class="card-body">
@@ -76,7 +73,8 @@
                                 <i class="fa fa-clock-o"></i>
                                 <!-- "fa-comments"  the comments font-->
                                 <small>{{ .Time }}</small>
-                                <i class="fa fa-thumbs-o-up" style="padding-left: 3%;"></i>
+                                <!-- <i><a href="likes" class="button fa fa-thumbs-o-up" style="margin-left: 3%;"></a></i>
+                                <i><a href="likes" class="fa fa-thumbs-o-down" style="margin-left: 3%;"></a></i> -->
                             </div>
                         </div>
                     </div>
@@ -119,18 +117,27 @@
                                    <img src="images/avatar/64-2.jpg" alt="">
                                    <div class="send-time">{{ .Time }}</div>
                                 </div>
+
                                 <div class="msg-box">
                                     <div class="inner-box">
                                         <div class="name">
                                             @{{ .Name }}
                                         </div>
-                                        <div class="meg">
+                                        <div class="meg" style="margin-bottom: 2%;">
                                             {{ .Comment }}
+                                        </div>
+                                        <div class="like-buttons" style="margin-bottom: -2%;">
+                                            <form method="post">
+                                            <button type="submit" value="{{ .Cid }}" class="button fa fa-thumbs-o-up"  name="clyks">{{ .Likes }}</button>
+                                            <button type="submit" value="{{ .Cid }}" class="fa fa-thumbs-o-down" name="cdislyks">{{ .Dislikes }}</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             {{ end }}
+                        </li>
+                        <li>
                         </li>
                     </ul>
                     <div class="send-mgs">
@@ -139,7 +146,6 @@
                         <div class="yourmsg" id="commentInput">
                             <input type="hidden" name="post_IId" value="{{ .Pid }}"> <input class="form-control" name="chats" type="text">
                         </div>
-
                         <button type="submit" class="btn msg-send-btn">
                             <!--  -->
                             <i class="pe-7s-paper-plane"></i>

@@ -2510,3 +2510,7 @@ footer.site-footer {
 
 
 /* CSS */
+
+.card-title box-title title-text {
+  display: flex;
+}

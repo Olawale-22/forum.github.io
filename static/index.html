@@ -164,32 +164,22 @@
                         <a href="page-register" > <i class="menu-icon fa fa-sign-out"></i>Sign out</a> 
                     </li> -->
 
-                    <li class="menu-title">Icons</li><!-- /.menu-title -->
+                    <li class="menu-title">CATEGORIES</li><!-- /.menu-title -->
 
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
-                            <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
-                        </ul>
+                    <li>
+                        <a href="games.html"> <i class="menu-icon fa fa-gamepad"></i>  Games</a>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                        <a href="gardening.html"> <i class="menu-icon fa fa-leaf"></i>Gardening</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
-                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
-                        </ul>
+                    <li>
+                        <a href="books.html"> <i class="menu-icon fa fa-book"></i>Books</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                            <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
-                        </ul>
+                    <li>
+                        <a href="life-hacks.html"> <i class="menu-icon fa fa-calendar-o"></i>Life hacks </a>
+                    </li>
+                    <li>
+                        <a href="liked-posts.html"> <i class="menu-icon fa fa-heart"></i>Posts liked</a>
                     </li>
                     <li class="menu-title">Extras</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -312,15 +302,22 @@
                 </div>
             </div>
         </header>
-
-        <div class="card-title box-title title-text">
+        
+        <div class="card-title box-title title-text" style="display: flex; flex-direction: row;">
             <h3>Trending Zone Forum</h3>
+            <form method="POST" style="padding-bottom: -20;">
+            <select name="filter" class="select-filter-of-post" style="margin-left: 20%;">
+                <option name="filter" value="">Filtered by</option>
+                <option name="filter" value="created-posts">Created posts</option>
+                <option name="filter" value="liked-posts">Liked posts</option>
+            </select>
+            </form>
         </div>
         <!-- hr tag gives the tiny horizontal line... it can also be styled if need be -->
         <hr>
         <div style="margin-left: 5%; padding-top: 2%; margin-top: 2%; margin-right: 5%;">
             <div class="little-title-text">
-                <medium>.Annonces .Info .Entertainment .Blog .Invitations —— make a post...</medium>
+                <medium>.Annonces .Info .Entertainment .Blog .Invitations —— make a post...</medium>
             </div>
             <form method="POST" style="padding-bottom: -8%;">
                 <div>

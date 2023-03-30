@@ -1,8 +1,10 @@
 package auth
 
 import (
+	"database/sql"
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -45,4 +47,58 @@ func MashallXIV() Web {
 	web.RedirectUris = data.Webb.RedirectUris
 
 	return web
+}
+
+var deebee = "./datab.db"
+
+func Init() {
+	conn, err := sql.Open("sqlite3", deebee)
+	if err != nil {
+		fmt.Println("unable to open database home handler")
+		//log.Fatal(err.Error())
+	}
+	conn.Exec("CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, full_name TEXT, education TEXT, home_address TEXT, city TEXT, postal_code TEXT, flat_number TEXT, phone TEXT, email TEXT, password TEXT)")
+
+	defer conn.Close()
+
+	_, errK := conn.Exec("CREATE TABLE IF NOT EXISTS activities (user_id INTEGER, post_id INTEGER PRIMARY KEY AUTOINCREMENT, post TEXT, username TEXT, category TEXT, date_created DATETIME, FOREIGN KEY(user_id) REFERENCES users(user_id))")
+	if errK != nil {
+		fmt.Println(errK)
+	}
+
+	_, err = conn.Exec("CREATE TABLE IF NOT EXISTS logs (user_id INTEGER, username TEXT, coookies TEXT, timestamp DATETIME, FOREIGN KEY(user_id) REFERENCES users(user_id))")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err = conn.Exec("CREATE TABLE IF NOT EXISTS likes_ (user_id INTEGER, username TEXT, post_id INTEGER,  like_id INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(user_id) REFERENCES users(user_id), FOREIGN KEY(post_id) REFERENCES activities(post_id))")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err = conn.Exec("CREATE TABLE IF NOT EXISTS clikes_ (user_id INTEGER, username TEXT, comment_id INTEGER,  like_id INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(user_id) REFERENCES users(user_id), FOREIGN KEY(comment_id) REFERENCES comments(comment_id))")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err = conn.Exec("CREATE TABLE IF NOT EXISTS dislikes_ (user_id INTEGER, username TEXT, post_id INTEGER,  like_id INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(user_id) REFERENCES users(user_id), FOREIGN KEY(post_id) REFERENCES activities(post_id))")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err = conn.Exec("CREATE TABLE IF NOT EXISTS cdislikes_ (user_id INTEGER, username TEXT, comment_id INTEGER,  like_id INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(user_id) REFERENCES users(user_id), FOREIGN KEY(comment_id) REFERENCES comments(comment_id))")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, errC := conn.Exec("CREATE TABLE IF NOT EXISTS comments (user_id INTEGER, username TEXT, comment_id INTEGER PRIMARY KEY AUTOINCREMENT, post_id INTEGER, comment TEXT, date_created DATETIME, FOREIGN KEY(user_id) REFERENCES users(user_id), FOREIGN KEY(post_id) REFERENCES activities(post_id))")
+
+	if errC != nil {
+		fmt.Println(errC)
+	}
+
 }

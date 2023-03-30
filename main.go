@@ -1,15 +1,17 @@
 /*
-
 project: forum
 SQLite Go-documentation and package used: https://pkg.go.dev/github.com/mattn/go-sqlite3
 BUILD- DOCKER IMAGE: "docker build -t myapp ."
 RUN - DOCKER CONTAINER: "docker run -p 8282:8282 myapp"
 
+BUIL PROGRAM SCRIPT: "go build"
 */
 
 package main
 
 import (
+	iot "clouds/autth"
+	"clouds/cat"
 	gt "clouds/getreg"
 	hub "clouds/github"
 	"log"
@@ -18,8 +20,10 @@ import (
 
 func main() {
 
+	iot.Init()
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets/"))))
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./images/"))))
+	//http.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir("./uploads/"))))
 
 	http.HandleFunc("/", gt.IndexHandler)
 	http.HandleFunc("/indexlog", gt.Homehandler)
@@ -28,6 +32,15 @@ func main() {
 	http.HandleFunc("/page-register", gt.FillForm)
 	http.HandleFunc("/post", gt.PostHandler)
 	http.HandleFunc("/page-login", gt.Login)
+	// http.HandleFunc("/likes", gt.LikeHandler)
+
+	// Categories Handlers
+	http.HandleFunc("/games", cat.Games)
+	http.HandleFunc("/gardening", cat.Gardening)
+	http.HandleFunc("/books", cat.Books)
+	http.HandleFunc("/life-hacks", cat.LifeHacks)
+	http.HandleFunc("/createdposts", cat.CreatedPosts)
+	http.HandleFunc("/liked", cat.LikedPosts)
 
 	// google Auth Handlers
 	http.HandleFunc("/gugu", gt.HandleLogin)
